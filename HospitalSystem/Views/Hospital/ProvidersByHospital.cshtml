@@ -1,0 +1,25 @@
+﻿@model List<HospitalSystem.Application.DTOs.ProviderDto>
+
+<h2>Providers at Hospital: @ViewBag.HospitalId</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Number</th>
+            <th>Name</th>
+            <th>Hospital</th>
+            <th>Is Doctor</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var p in Model)
+        {
+            <tr>
+                <td>@p.Number</td>
+                <td>@p.Name</td>
+                <td>@p.Hospital</td>
+                <td>@p.Doctor</td>
+            </tr>
+        }
+    </tbody>
+</table>

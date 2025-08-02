@@ -15,7 +15,7 @@ namespace HospitalSystem.Domain.Validation
             if (string.IsNullOrWhiteSpace(treatment.Hospital) || string.IsNullOrWhiteSpace(treatment.PatientMRN))
                 return false;
 
-            if (treatment.DischargedOn.HasValue)
+            if (!string.IsNullOrWhiteSpace((treatment.DischargedOn)))
             {
                 if (string.IsNullOrWhiteSpace(treatment.Provider) || string.IsNullOrWhiteSpace(treatment.Details))
                     return false;

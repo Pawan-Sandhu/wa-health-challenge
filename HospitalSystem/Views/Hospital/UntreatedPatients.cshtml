@@ -1,0 +1,21 @@
+﻿@model List<HospitalSystem.Application.DTOs.PatientDto>
+
+<h2>Untreated Patients at Hospital: @ViewBag.HospitalId</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>MRN</th>
+            <th>Name</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var patient in Model)
+        {
+            <tr>
+                <td>@patient.MedicalReferenceNumber</td>
+                <td>@patient.Name</td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,10 @@
+﻿@model List<string>
+
+<h2>MRNs for Patients Treated by Doctor: @ViewBag.DoctorId</h2>
+
+<ul>
+    @foreach (var mrn in Model)
+    {
+        <li>@mrn</li>
+    }
+</ul>

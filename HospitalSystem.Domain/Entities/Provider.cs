@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CsvHelper.Configuration.Attributes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,7 +12,7 @@ namespace HospitalSystem.Domain.Entities
         public string Number { get; set; }
         public string Name { get; set; }
         public string Hospital { get; set; }
-
-        public bool IsDoctor { get; set; }
+        [Name("Doctor")]
+        public string Doctor { get; set; }
     }
 }

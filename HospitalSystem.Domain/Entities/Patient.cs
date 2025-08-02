@@ -1,14 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using CsvHelper.Configuration.Attributes;
 
 namespace HospitalSystem.Domain.Entities
 {
     public class Patient
     {
+        [Name("Medical Reference Number")]
         public string MedicalReferenceNumber { get; set; }
+
+        [Name("Patient Name")]
         public string Name { get; set; }
 
     }

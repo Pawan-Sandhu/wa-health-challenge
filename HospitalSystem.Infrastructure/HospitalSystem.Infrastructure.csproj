@@ -11,7 +11,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\HospitalSystem.Application\HospitalSystem.Application.csproj" />
     <ProjectReference Include="..\HospitalSystem.Domain\HospitalSystem.Domain.csproj" />
   </ItemGroup>
 

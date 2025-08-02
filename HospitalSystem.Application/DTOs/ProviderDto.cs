@@ -12,6 +12,6 @@ namespace HospitalSystem.Application.DTOs
         public string Name { get; set; }
         public string Hospital { get; set; }
 
-        public bool IsDoctor { get; set; }
+        public string Doctor { get; set; }
     }
 }

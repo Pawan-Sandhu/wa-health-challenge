@@ -1,0 +1,12 @@
+﻿@model HospitalSystem.Application.DTOs.TreatmentDto
+
+<h2>Create Treatment</h2>
+
+<form asp-action="CreateTreatment" method="post">
+    <label>Patient: <input asp-for="PatientMRN" /></label><br />
+    <label>Provider: <input asp-for="Provider" /></label><br />
+    <label>Hospital: <input asp-for="Hospital" /></label><br />
+    <label>Details: <input asp-for="Details" /></label><br />
+    <label>DischargedOn: <input asp-for="DischargedOn" type="date" /></label><br />
+    <button type="submit">Save</button>
+</form>

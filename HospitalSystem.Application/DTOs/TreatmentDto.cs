@@ -13,6 +13,6 @@ namespace HospitalSystem.Application.DTOs
         public string Provider { get; set; }
 
         public string PatientMRN { get; set; }
-        public DateTime? DischargedOn { get; set; }
+        public string DischargedOn { get; set; }
     }
 }

@@ -1,0 +1,26 @@
+﻿<h2>Patient Records</h2>
+
+<ul>
+    <li>
+        @using (Html.BeginForm("ProvidersByHospital", "Records", FormMethod.Get))
+        {
+            <label>Hospital: <input type="text" name="hospital" /></label>
+            <input type="submit" value="View Providers" />
+        }
+    </li>
+    <li>
+        @using (Html.BeginForm("PatientMrnsByDoctor", "Records", FormMethod.Get))
+        {
+            <label>Doctor ID: <input type="text" name="doctorId" /></label>
+            <input type="submit" value="View Patient MRNs" />
+        }
+    </li>
+    <li>
+        @using (Html.BeginForm("UntreatedPatients", "Records", FormMethod.Get))
+        {
+            <label>Hospital ID: <input type="text" name="hospitalId" /></label>
+            <input type="submit" value="View Untreated Patients" />
+        }
+    </li>
+    <li><a href="@Url.Action("CreateTreatment", "Records")">Add Treatment</a></li>
+</ul>

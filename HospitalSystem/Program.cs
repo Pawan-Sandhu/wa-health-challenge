@@ -1,8 +1,14 @@
+using HospitalSystem.Application.Interfaces;
+using HospitalSystem.Application.Services;
+using HospitalSystem.Domain.Interfaces;
+using HospitalSystem.Infrastructure.Factory;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-
+builder.Services.AddScoped<IDataAccessFactory, FileAccessFactory>();
+builder.Services.AddScoped<IDataService, DataService>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -22,6 +28,6 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=Hospital}/{action=Index}/{id?}");
 
 app.Run();
