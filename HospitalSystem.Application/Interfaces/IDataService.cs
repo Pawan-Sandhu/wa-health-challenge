@@ -9,7 +9,11 @@ namespace HospitalSystem.Application.Interfaces
 {
     public interface IDataService
     {
-       
+        List<PatientDto> GetAllPatients();
+        List<ProviderDto> GetAllProviders();
+        List<TreatmentDto> GetAllTreatments();
+        List<HospitalDto> GetAllHospitals();
+
         List<ProviderDto> GetProvidersByHospital(string hospitalId);
         List<string> GetPatientMrnsByDoctor(string doctorId);
         List<PatientDto> GetUntreatedPatientsAtHospital(string hospitalId);

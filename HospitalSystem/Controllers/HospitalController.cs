@@ -2,6 +2,7 @@
 using HospitalSystem.Application.Interfaces;
 using HospitalSystem.Domain.Interfaces;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace HospitalSystem.Controllers
 {
@@ -17,15 +18,20 @@ namespace HospitalSystem.Controllers
 
         public IActionResult Index()
         {
+            var hospitals = _dataService.GetAllHospitals();
+            ViewBag.Hospitals = new SelectList(hospitals, "Id", "Name");
             return View();
-        }
+           
+        }       
 
-
+        [HttpPost]
         public IActionResult ProvidersByHospital(string hospitalId)
         {
+            var hospitals = _dataService.GetAllHospitals();
+            ViewBag.Hospitals = new SelectList(hospitals, "Id", "Name", hospitalId);
+
             var providers = _dataService.GetProvidersByHospital(hospitalId);
-            ViewBag.HospitalId = hospitalId;
-            return View(providers);
+            return View(providers); // Send list to view
         }
 
 

@@ -2,6 +2,7 @@
 using HospitalSystem.Application.Interfaces;
 using HospitalSystem.Application.Mappers;
 using HospitalSystem.Domain.Entities;
+using HospitalSystem.Domain.Validation;
 using HospitalSystem.Infrastructure.Services;
 using System;
 using System.Collections.Generic;
@@ -22,12 +23,15 @@ namespace HospitalSystem.Application.Services
         {
             var domainPatients = new PatientCsvReader().ReadData("wwwroot/data/Patients.csv");
             var _patients = domainPatients.Select(PatientMapper.ToDto).ToList();
+
             var domainProviders = new ProviderCsvReader().ReadData("wwwroot/data/Providers.csv");
-            var _providers = domainPatients.Select(PatientMapper.ToDto).ToList();
+            var _providers = domainProviders.Select(ProviderMapper.ToDto).ToList();
+
             var domainHospitals = new HospitalCsvReader().ReadData("wwwroot/data/Hospitals.csv");
-            var _hospitals = domainPatients.Select(PatientMapper.ToDto).ToList();
+            var _hospitals = domainHospitals.Select(HospitalMapper.ToDto).ToList();
+
             var domainTreatments = new TreatmentCsvReader().ReadData("wwwroot/data/Treatments.csv");
-            var _treatments = domainPatients.Select(PatientMapper.ToDto).ToList();           
+            var _treatments = domainTreatments.Select(TreatmentMapper.ToDto).ToList();           
         }
 
         
@@ -62,6 +66,26 @@ namespace HospitalSystem.Application.Services
         public void UpdateTreatment(TreatmentDto treatment)
         {
             // Save changes (not implemented)
+        }
+
+        public List<PatientDto> GetAllPatients()
+        {
+            return _patients.ToList();
+        }
+
+        public List<ProviderDto> GetAllProviders()
+        {
+            return _providers.ToList();
+        }
+
+        public List<TreatmentDto> GetAllTreatments()
+        {
+            return _treatments.ToList();
+        }
+
+        public List<HospitalDto> GetAllHospitals()
+        {
+            return _hospitals.ToList();
         }
     }
 }

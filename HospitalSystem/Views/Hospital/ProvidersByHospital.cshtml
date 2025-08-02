@@ -1,25 +1,47 @@
 ﻿@model List<HospitalSystem.Application.DTOs.ProviderDto>
 
-<h2>Providers at Hospital: @ViewBag.HospitalId</h2>
+@{
+    ViewData["Title"] = "Providers by Hospital";
+}
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>Number</th>
-            <th>Name</th>
-            <th>Hospital</th>
-            <th>Is Doctor</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var p in Model)
-        {
+<h2>Providers by Hospital</h2>
+
+<form asp-action="ProvidersByHospital" method="post">
+    <div class="form-group">
+        <label for="hospitalSelect">Select Hospital:</label>
+        <select id="hospitalSelect" name="hospitalId" class="form-control" asp-items="ViewBag.Hospitals">
+            <option value="">-- Select Hospital --</option>
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary mt-2">Search</button>
+</form>
+
+@if (Model != null && Model.Any())
+{
+    <h3 class="mt-4">Providers at Selected Hospital</h3>
+    <table class="table table-bordered mt-2">
+        <thead>
             <tr>
-                <td>@p.Number</td>
-                <td>@p.Name</td>
-                <td>@p.Hospital</td>
-                <td>@p.Doctor</td>
+                <th>Name</th>
+                <th>Number</th>
+                <th>Hospital</th>
+                <th>Is Doctor</th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (var provider in Model)
+            {
+                <tr>
+                    <td>@provider.Name</td>
+                    <td>@provider.Number</td>
+                    <td>@provider.Hospital</td>
+                    <td>@provider.Doctor</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else if (Model != null)
+{
+    <p class="text-warning mt-4">No providers found for selected hospital.</p>
+}
