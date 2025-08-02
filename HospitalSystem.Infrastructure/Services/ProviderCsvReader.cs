@@ -1,6 +1,7 @@
 ﻿using CsvHelper;
-using HospitalSystem.Application.DTOs;
+using HospitalSystem.Domain.Entities;
 using HospitalSystem.Domain.Interfaces;
+using HospitalSystem.Domain.Validation;
 using System;
 using System.Collections.Generic;
 using System.Formats.Asn1;
@@ -11,13 +12,14 @@ using System.Threading.Tasks;
 
 namespace HospitalSystem.Infrastructure.Services
 {
-    public class ProviderCsvReader : IDataReader<ProviderDto>
+    public class ProviderCsvReader : IDataReader<Provider>
     {
-        public List<ProviderDto> ReadData(string filePath)
+        public List<Provider> ReadData(string filePath)
         {
             using var reader = new StreamReader(filePath);
             using var csv = new CsvReader(reader, CultureInfo.InvariantCulture);
-            return csv.GetRecords<ProviderDto>().ToList();
+            var rawData = csv.GetRecords<Provider>().ToList();
+            return rawData.Where(p => ProviderValidator.IsValid(p)).ToList();
         }
 
        

@@ -6,4 +6,14 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\HospitalSystem.Application\HospitalSystem.Application.csproj" />
+    <ProjectReference Include="..\HospitalSystem.Domain\HospitalSystem.Domain.csproj" />
+    <ProjectReference Include="..\HospitalSystem.Infrastructure\HospitalSystem.Infrastructure.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\data\" />
+  </ItemGroup>
+
 </Project>

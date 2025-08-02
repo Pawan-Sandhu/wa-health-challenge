@@ -13,7 +13,7 @@ namespace HospitalSystem.Domain.Entities
         public string Provider { get; set; }
 
         public string PatientMRN { get; set; }
-        public DateTime DischargedOn { get; set; }
+        public DateTime? DischargedOn { get; set; }
 
 
     }
